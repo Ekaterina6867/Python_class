@@ -13,10 +13,18 @@
 # print(max_area(max_area.index(max(max_area))))
 
 
+# def find_orbits(orbits):
+#     new_orbits = [(a,b)  for (a,b) in orbits if a != b]
+#     max_area = [3.14 * a * b for (a,b) in new_orbits]
+#     return new_orbits[(max_area.index(max(max_area)))]
+
+# orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
+# print(*find_orbits(orbits))
+
+
+#или генератор словарей
 def find_orbits(orbits):
-    new_orbits = [(a,b)  for (a,b) in orbits if a != b]
-    max_area = [3.14 * a * b for (a,b) in new_orbits]
-    return new_orbits[(max_area.index(max(max_area)))]
+    return max({a*b: (a,b) for  a,b in orbits if a != b}.items())[1]
 
 orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
-print(*find_orbits(orbits))
+print(find_orbits(orbits))
